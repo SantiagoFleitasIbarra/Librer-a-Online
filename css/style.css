@@ -1,0 +1,557 @@
+/* Reset básico para asegurar la consistencia entre navegadores */
+body, h1, h2, h3, p, ul, li, form {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background: #e3e9f4; /* Un tono suave para el fondo */
+  color: #333;
+  overflow-x: hidden; /* Evita la barra de desplazamiento horizontal */
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar - Diseño minimalista y elegante */
+.sidebar {
+  width: 220px; /* Menú lateral más estrecho */
+  background: #2c3e50; /* Un azul oscuro para el sidebar */
+  color: #fff;
+  padding: 30px;
+  box-shadow: 5px 0 30px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+  z-index: 100; /* Asegura que esté encima de otros elementos */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease; /* For hamburger menu animation */
+}
+
+/* Styles for when the sidebar is open (hamburger menu) */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.logo a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #f39c12; /* Un toque de color al pasar el mouse */
+}
+
+.sidebar nav ul {
+  list-style: none;
+}
+
+.sidebar nav ul li a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden; /* Para el efecto de línea */
+}
+
+.sidebar nav ul li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #f39c12; /* Línea dorada */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.sidebar nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.08); /* Ligero cambio de color al pasar el mouse */
+  transform: translateY(-2px); /* Elevación sutil */
+}
+
+.sidebar nav ul li a:hover::before {
+  transform: scaleX(1); /* Revela la línea */
+}
+
+.sidebar nav ul li a i {
+  margin-right: 12px;
+  font-size: 1.1em;
+}
+
+/* Style the terms and conditions button */
+.terms-button {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 15px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+  text-align: center; /* Center the text */
+  margin-top: auto; /* Push to the bottom */
+}
+
+.terms-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Darken on hover */
+  transform: translateY(-2px);
+}
+
+/* Content - Espacio para el contenido principal */
+.content {
+  flex: 1;
+  padding: 40px;
+  background: #fff;
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  z-index: 1; /* Para que esté por encima del fondo */
+  overflow: visible; /* Oculta el desbordamiento para las animaciones */
+}
+
+.content section {
+  display: none; /* Oculta todas las secciones por defecto */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.content section.active {
+  display: block; /* Muestra la sección activa */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.content h1 {
+  font-size: 3em;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil en el título */
+}
+
+.content h2 {
+  font-size: 2.2em;
+  color: #34495e;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+}
+
+.content p {
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Catálogo - Diseño de la cuadrícula de libros */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 20px;
+}
+
+.book {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+}
+
+.book img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.book h3 {
+  font-size: 1.4em;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.book p {
+  color: #777;
+  font-style: italic;
+}
+
+.download-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #3498db; /* Azul brillante */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 15px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.download-button:hover {
+  background-color: #2980b9; /* Azul más oscuro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+/* Contacto - Estilo del formulario de contacto */
+#contacto form {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#contacto label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #34495e;
+}
+
+#contacto input[type="text"],
+#contacto input[type="email"],
+#contacto textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  font-size: 1em;
+  color: #555;
+  transition: border-color 0.3s ease;
+}
+
+#contacto input[type="text"]:focus,
+#contacto input[type="email"]:focus,
+#contacto textarea:focus {
+  border-color: #3498db; /* Resaltar el borde al enfocar */
+  outline: none;
+}
+
+#contacto textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+#contacto input[type="submit"] {
+  background-color: #2ecc71; /* Verde esmeralda */
+  color: #fff;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+#contacto input[type="submit"]:hover {
+  background-color: #27ae60; /* Verde más oscuro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+/* Publicaciones - Estilo para la sección de publicaciones */
+#publicaciones {
+  padding: 30px;
+}
+
+#publicaciones h2 {
+  color: #34495e;
+  margin-bottom: 20px;
+}
+
+#publicaciones p {
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+#publicaciones-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 40px;
+  padding: 30px;
+}
+
+#upload-form {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+#upload-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #34495e;
+}
+
+#upload-form input[type="text"],
+#upload-form input[type="file"] {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  font-size: 1.1em;
+  color: #555;
+  transition: border-color 0.3s ease;
+}
+
+#upload-form input[type="text"]:focus,
+#upload-form input[type="file"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+#upload-form button {
+  background-color: #f39c12; /* Naranja dorado */
+  color: #fff;
+  padding: 16px 35px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+}
+
+#upload-form button:hover {
+  background-color: #e67e22; /* Naranja más oscuro al pasar el mouse */
+  transform: translateY(-3px);
+}
+
+/* Estilos para el carrusel */
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+  width: 200px;
+  height: auto;
+  margin: 0 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+  transform: scale(1.1);
+}
+
+.carousel-container .controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  transform: translateY(-50%);
+}
+
+.carousel-container .controls button {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-container .controls button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos para el término y condiciones */
+.terms-conditions {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.terms-conditions h3 {
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+/* Estilos para los carteles informativos */
+.section-info {
+  background-color: #eaf2ff;
+  padding: 15px;
+  border-left: 5px solid #3498db;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  color: #333;
+}
+
+.section-info h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #2980b9;
+}
+
+/* Estilos para el modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 10px;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Hamburger menu icon */
+.hamburger-icon {
+  display: none; /* Hidden by default, shown on smaller screens */
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  color: white;
+  z-index: 101; /* Ensure it's above the sidebar */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Stack sidebar and content */
+  }
+
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px;
+    box-shadow: none;
+    transform: translateX(-100%); /* Hide off-screen initially */
+    transition: transform 0.3s ease; /* Smooth animation */
+  }
+
+  .sidebar.open {
+    transform: translateX(0); /* Slide in when open */
+  }
+
+  .content {
+    padding: 20px;
+    box-shadow: none;
+    margin-top: 60px; /* Add some top margin to avoid content overlap */
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
+  .book {
+    padding: 15px;
+  }
+
+  .book img {
+    height: 150px;
+    margin-bottom: 10px;
+  }
+
+  .book h3 {
+    font-size: 1.2em;
+  }
+
+  #contacto form,
+  #upload-form {
+    padding: 20px;
+  }
+
+  /* Show the hamburger icon */
+  .hamburger-icon {
+    display: block;
+  }
+
+  /* Centra el botón de términos y condiciones en pantallas pequeñas */
+  .terms-button {
+    text-align: center;
+  }
+}

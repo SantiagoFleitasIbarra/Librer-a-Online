@@ -1,0 +1,183 @@
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Librería Online</title>
+  <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <a href="#">Mi Librería</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#" data-section="info"><i class="fas fa-info-circle"></i> Información</a></li>
+          <li><a href="#" data-section="catalogo"><i class="fas fa-book"></i> Catálogo</a></li>
+          <li><a href="#" data-section="contacto"><i class="fas fa-envelope"></i> Contacto</a></li>
+          <li><a href="#" data-section="publicaciones"><i class="fas fa-upload"></i> Publicaciones</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="terms-button" onclick="openTermsModal()">Términos y Condiciones</a>
+    </aside>
+
+    <!-- Hamburger Icon -->
+    <div class="hamburger-icon">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <main class="content">
+      <section id="info" class="active">
+        <div class="section-info">
+          <h4>Información</h4>
+          <p>Bienvenido a nuestra librería online. Aquí encontrarás una amplia selección de ebooks y podrás compartir
+            tus propias creaciones con nuestra comunidad.</p>
+        </div>
+
+        <h1>Bienvenido a Mi Librería Online</h1>
+        <p>Descubre una amplia selección de ebooks y comparte tus propias creaciones con nuestra comunidad.</p>
+
+        <!-- Carrusel de portadas de libros -->
+        <div class="carousel-container">
+          <div class="carousel">
+            <img src="images/agnes-teorc3ada-de-los-sentimientos-1.jpg" alt="Portada 1">
+            <img src="images/antigona-gonzalez-1.jpg" alt="Portada 2">
+            <img src="images/antologc3ada-poc3a9tica-de-benedetti.jpg" alt="Portada 3">
+            <img src="images/el-hombre-que-fue-jueves.gif" alt="Portada 4">
+            <img src="images/holderlin.jpg" alt="Portada 5">
+          </div>
+        </div>
+
+        <!-- Términos y condiciones -->
+
+      </section>
+
+      <section id="catalogo">
+        <div class="section-info">
+          <h4>Catálogo</h4>
+          <p>Explora nuestra selección de ebooks disponibles para descargar. Cada librocomes con su portada y un enlace
+            directo para la descarga en formato PDF.</p>
+        </div>
+
+        <h2>Catálogo de Ebooks</h2>
+        <div class="book-grid">
+          <!-- Ejemplo de libro (se generará dinámicamente con JS) -->
+          <div class="book">
+            <img src="images/la-reina-de-las-nieves.jpg" alt="Título del Libro">
+            <h3>La reina de las nieves</h3>
+            <p>Hans Christian Andersen</p>
+            <a href="pdf/la-reina-de-las-nieves-hans-christian-andersen.pdf" class="download-button">Descargar PDF</a>
+          </div>
+          <!-- Fin ejemplo -->
+        </div>
+      </section>
+
+      <section id="contacto">
+        <div class="section-info">
+          <h4>Contacto</h4>
+          <p>¿Tienes alguna pregunta o comentario? No dudes en ponerte en contacto con nosotros a través del siguiente
+            formulario.</p>
+        </div>
+
+        <h2>Contacto</h2>
+        <p>Ponte en contacto con nosotros a través del siguiente formulario:</p>
+        <form>
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre"><br><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email"><br><br>
+
+          <label for="mensaje">Mensaje:</label>
+          <textarea id="mensaje" name="mensaje"></textarea><br><br>
+
+          <input type="submit" value="Enviar">
+        </form>
+      </section>
+
+      <section id="publicaciones">
+        <div class="section-info">
+          <h4>Publicaciones</h4>
+          <p>Comparte tus propios ebooks con nuestra comunidad. Sube tu PDF y la portada del libro para que otros
+            usuarios puedan descubrir tus creaciones.</p>
+        </div>
+
+        <h2>Publicaciones de la Comunidad</h2>
+        <p>Comparte tus propios ebooks con nuestra comunidad. Sube tu PDF y la portada del libro.</p>
+
+        <form id="upload-form">
+          <label for="titulo">Título del Libro:</label>
+          <input type="text" id="titulo" name="titulo" required><br><br>
+
+          <label for="autor">Autor:</label>
+          <input type="text" id="autor" name="autor" required><br><br>
+
+          <label for="portada">Portada del Libro:</label>
+          <input type="file" id="portada" name="portada" accept="image/*" required><br><br>
+
+          <label for="pdf">Archivo PDF:</label>
+          <input type="file" id="pdf" name="pdf" accept=".pdf" required><br><br>
+
+          <button type="submit">Subir Libro</button>
+        </form>
+
+        <div id="publicaciones-grid">
+          <!-- Aquí se mostrarán las publicaciones (se generará dinámicamente con JS) -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal de Términos y Condiciones -->
+  <div id="termsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button" onclick="closeTermsModal()">&times;</span>
+      <h3>Términos y Condiciones</h3>
+      <p>Estos son los términos y condiciones de uso de nuestra librería online. Al acceder y utilizar nuestros
+        servicios, aceptas cumplir con estos términos en su totalidad.</p>
+      <p><strong>1. Uso Aceptable:</strong></p>
+      <p>Puedes utilizar nuestra plataforma para explorar, descargar y compartir ebooks. Sin embargo, te comprometes a
+        no utilizar nuestros servicios para fines ilegales o perjudiciales.</p>
+      <p><strong>2. Propiedad Intelectual:</strong></p>
+      <p>Los ebooks y contenidos disponibles en nuestra plataforma están protegidos por derechos de autor. No puedes
+        reproducir, distribuir o modificar estos materiales sin el consentimiento adecuado.</p>
+      <p><strong>3. Responsabilidad del Usuario:</strong></p>
+      <p>Eres responsable de tus propias publicaciones y contribuciones. Nos reservamos el derecho de eliminar
+        contenido inapropiado o que viole nuestros términos.</p>
+      <p><strong>4. Privacidad:</strong></p>
+      <p>Tu privacidad es importante para nosotros. Consulta nuestra política de privacidad para obtener información
+        detallada sobre cómo recopilamos, utilizamos y protegemos tus datos personales.</p>
+      <p><strong>5. Cambios en los Términos:</strong></p>
+      <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Te recomendamos revisar
+        periódicamente esta sección para estar al tanto de las actualizaciones.</p>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script>
+  <script>
+    function openTermsModal() {
+      document.getElementById('termsModal').style.display = 'block';
+    }
+
+    function closeTermsModal() {
+      document.getElementById('termsModal').style.display = 'none';
+    }
+
+    // Cerrar el modal si se hace clic fuera del contenido
+    window.onclick = function (event) {
+      if (event.target == document.getElementById('termsModal')) {
+        closeTermsModal();
+      }
+    }
+  </script>
+</body>
+
+</html>
